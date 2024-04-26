@@ -5,7 +5,7 @@ import lombok.SneakyThrows;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import utilities.EnvUtil;
+import utilities.PropertyUtil;
 
 import java.time.Duration;
 import java.util.Properties;
@@ -26,12 +26,12 @@ public class CommonPageActions {
     public CommonPageActions(WebBrowserFactory browserFactory) {
         this.BrowserFactory = browserFactory;
         driver = browserFactory.getDriverService();
-        prop = EnvUtil.getProperties();
+        prop = PropertyUtil.getProperties();
     }
 
     @SneakyThrows
     public void goToUrl() {
-        driver.get(EnvUtil.getProperty("url"));
+        driver.get(PropertyUtil.getProperty("url"));
     }
 
     public WebElement clickOnTeams() {

@@ -4,7 +4,7 @@ import driver.WebBrowserFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import utilities.EnvUtil;
+import utilities.PropertyUtil;
 
 import java.time.Duration;
 import java.util.Properties;
@@ -24,7 +24,7 @@ public class LoginPageActions {
 
     public LoginPageActions(WebBrowserFactory browserFactory) {
         driver = browserFactory.getDriverService();
-        prop = EnvUtil.getProperties();
+        prop = PropertyUtil.getProperties();
     }
 
 
