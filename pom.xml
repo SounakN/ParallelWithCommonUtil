@@ -20,7 +20,7 @@
         <appium.version>8.3.0</appium.version>
         <maven.version>3.0.0-M8</maven.version>
         <skipPluginPhase>test</skipPluginPhase>
-        <maven.skip.test>false</maven.skip.test>
+        <maven.test.skip>false</maven.test.skip>
     </properties>
     <dependencies>
 
@@ -167,7 +167,7 @@
                      <perCoreThreadCount>false</perCoreThreadCount>
                  </configuration>-->
                 <configuration>
-                    <skipTests>${maven.skip.test}</skipTests>
+                    <skipTests>${maven.test.skip}</skipTests>
                 </configuration>
                 <executions>
                     <execution>
