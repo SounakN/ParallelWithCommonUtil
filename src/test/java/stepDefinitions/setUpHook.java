@@ -30,16 +30,17 @@ public class setUpHook extends WebBrowserFactory {
         this.webBrowserFactory = webBrowserFactory;
     }
 
-    static {
-        String env = PropertyReader.getProperties(DATA_CONFIG + File.separator + MAVEN_PROPERTIES_FILE).getProperty("Env");
-        log.info("Loading data for the environment :: " + env);
-        PropertyUtil.loadProperties(env);
-    }
+/*    static {
+
+    }*/
 
     @Before
     @SneakyThrows
     public void Initiation(Scenario sc) {
-        HashMap<Integer, ArrayList<String>> vv = readExcelIntoHashMap(EXCEL_FOLDER_NAME + File.separator + "Book1.xlsx", "Sheet1");
+        String env = PropertyReader.getProperties(DATA_CONFIG + File.separator + MAVEN_PROPERTIES_FILE).getProperty("Env");
+        log.info("Loading data for the environment :: " + env);
+        PropertyUtil.loadProperties(env);
+      /*  HashMap<Integer, ArrayList<String>> vv = readExcelIntoHashMap(EXCEL_FOLDER_NAME + File.separator + "Book1.xlsx", "Sheet1");
         System.out.println(vv);
         Reader fr = convertFileIntoBufferedReader("TestData\\Test\\dd.txt");
         int hh;
@@ -48,8 +49,8 @@ public class setUpHook extends WebBrowserFactory {
             System.out.println(cc);
         }
         String ff = convertFileToJsonString("TestData/check.json");
-        System.out.println(ff);
-        System.out.println(sc.getName() + " is being running at :: " + Thread.currentThread().getId() + ":" + PropertyUtil.getProperty("maven"));
+        System.out.println(ff);*/
+      //  System.out.println(sc.getName() + " is being running at :: " + Thread.currentThread().getId() + ":" + PropertyUtil.getProperty("maven"));
         PageObjectInitialization.initializeObjects(webBrowserFactory);
         setBrowserType(PropertyUtil.getProperty("Driver"));
         scenario.set(sc);

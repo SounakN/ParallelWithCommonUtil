@@ -9,6 +9,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="parallelDemo" />
         <module name="CommonUtil" />
+        <module name="mindAiProjectDemo" />
       </profile>
     </annotationProcessing>
   </component>
