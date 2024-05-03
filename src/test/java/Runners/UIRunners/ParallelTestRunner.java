@@ -12,7 +12,7 @@ import org.junit.runner.RunWith;
                 "json:target/reports/cucumberParallel.json"
         },
         features = {"src/test/resources/FeatureFiles/UI/FeatureFileParallel"},
-        glue = {"stepDefinitions"},
+        glue = {"stepDefinitions/UI"},
         tags = "",
         dryRun = false, monochrome = true
 )
