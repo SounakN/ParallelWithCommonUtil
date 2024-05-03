@@ -11,7 +11,7 @@ import org.junit.runner.RunWith;
                 "html:target/reports/cuucmbertestreportParallel.html",
                 "json:target/reports/cucumberParallel.json"
         },
-        features = {"src/test/resources/FeatureFiles/FeatureFileParallel"},
+        features = {"src/test/resources/FeatureFiles/UI/FeatureFileParallel"},
         glue = {"stepDefinitions"},
         tags = "",
         dryRun = false, monochrome = true

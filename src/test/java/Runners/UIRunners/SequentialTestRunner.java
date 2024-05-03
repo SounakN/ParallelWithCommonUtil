@@ -11,7 +11,7 @@ import org.junit.runner.RunWith;
                 "html:target/reports/cuucmbertestreportSequential.html",
                 "json:target/reports/cucumberSequential.json"
         },
-        features = {"src/test/resources/FeatureFiles/FeatureFileSequential"},
+        features = {"src/test/resources/FeatureFiles/UI/FeatureFileSequential"},
         glue = {"stepDefinitions"},
         tags = "",
         dryRun = false, monochrome = true
