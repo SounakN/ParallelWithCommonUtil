@@ -11,7 +11,7 @@ Feature: Section header details verification
       | HeaderCheckString                                        | Section        |
       | HAVING A STRESSFUL DAY?,STRUGGLING TO FOCUS?,FOCUS GAMES | EVERYDAY TOOLS |
      | PRODUCTIVITY PROGRAMMES FOR YOU,FUN TOOLS FOR YOU        | PRODUCTIVITY   |
-     # | WHAT DO YOU WANT TO WORK ON?,FEATURED PROGRAMMES         | WELLNESS       |
+     #| WHAT DO YOU WANT TO WORK ON?,FEATURED PROGRAMMES         | WELLNESS       |
 
 
 

@@ -5,6 +5,7 @@ import lombok.SneakyThrows;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import utilities.ActionMethods;
 import utilities.PropertyUtil;
 
 import java.time.Duration;
@@ -22,11 +23,13 @@ public class CommonPageActions {
     public WebBrowserFactory BrowserFactory = null;
     private WebDriver driver;
     private Properties prop = null;
+    ActionMethods<WebDriver> actionMethods ;
 
     public CommonPageActions(WebBrowserFactory browserFactory) {
         this.BrowserFactory = browserFactory;
         driver = browserFactory.getDriverService();
         prop = PropertyUtil.getProperties();
+        actionMethods = new ActionMethods<>();
     }
 
     @SneakyThrows
@@ -35,27 +38,27 @@ public class CommonPageActions {
     }
 
     public WebElement clickOnTeams() {
-        WebElement teamElement = findElement(By.xpath(teamLoc), driver, Duration.ofSeconds(30), Duration.ofSeconds(2));
+        WebElement teamElement = actionMethods.findElement(By.xpath(teamLoc), driver, Duration.ofSeconds(30), Duration.ofSeconds(2));
         assertThat(teamElement).isNotNull();
-        click(driver, teamElement, Duration.ofSeconds(30));
+        actionMethods.click(driver, teamElement);
         embedScreenshot(driver, scenario.get(), "Clicked on Team");
         return teamElement;
     }
 
     public void logsOut() {
         WebElement teamElement = clickOnTeams();
-        WebElement LogoutElement = findElement(By.xpath(teamDropdownLogoutLoc), teamElement, driver, Duration.ofSeconds(30), Duration.ofSeconds(2));
+        WebElement LogoutElement = actionMethods.findElement(By.xpath(teamDropdownLogoutLoc), teamElement, driver, Duration.ofSeconds(30), Duration.ofSeconds(2));
         assertThat(LogoutElement).isNotNull();
-        click(driver, LogoutElement, Duration.ofSeconds(30));
-        WebElement loggedOutToastMessageElement = findElement(By.xpath(loggedOutToastMessageLoc), driver, Duration.ofSeconds(30), Duration.ofSeconds(2));
+        actionMethods.click(driver, LogoutElement);
+        WebElement loggedOutToastMessageElement = actionMethods.findElement(By.xpath(loggedOutToastMessageLoc), driver, Duration.ofSeconds(30), Duration.ofSeconds(2));
         assertThat(loggedOutToastMessageElement).isNotNull();
         embedScreenshot(driver, scenario.get(), "Logged Out");
     }
 
     public void closesModal() {
-        WebElement modalClosureElement = findElement(By.xpath(modalClosureLoc), driver, Duration.ofSeconds(30), Duration.ofSeconds(2));
+        WebElement modalClosureElement = actionMethods.findElement(By.xpath(modalClosureLoc), driver, Duration.ofSeconds(30), Duration.ofSeconds(2));
         assertThat(modalClosureElement).isNotNull();
-        click(driver, modalClosureElement, Duration.ofSeconds(30));
+        actionMethods.click(driver, modalClosureElement);
         embedText(scenario.get(), "Closed modal");
     }
 }

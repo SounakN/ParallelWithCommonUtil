@@ -22,7 +22,7 @@ public class LoginPageActions {
     private AppiumDriver driver;
     private Properties prop;
 
-    public LoginPageActions(WebBrowserFactory browserFactory) {
+    public LoginPageActions(MobileFactory mobileFactory) {
         driver = MobileFactory.getDriverService();
         prop = PropertyUtil.getProperties();
     }

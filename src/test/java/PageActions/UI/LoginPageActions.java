@@ -1,9 +1,11 @@
 package PageActions.UI;
 
 import driver.WebBrowserFactory;
+import io.cucumber.java.bs.A;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import utilities.ActionMethods;
 import utilities.PropertyUtil;
 
 import java.time.Duration;
@@ -21,29 +23,31 @@ public class LoginPageActions {
     //------------------------Locators----------------------------
     private WebDriver driver;
     private Properties prop;
+    ActionMethods<WebDriver> actionMethods ;
 
     public LoginPageActions(WebBrowserFactory browserFactory) {
         driver = browserFactory.getDriverService();
         prop = PropertyUtil.getProperties();
+        actionMethods = new ActionMethods<>();
     }
 
 
     public void enterInCredentials() {
-        WebElement emailElement = findElement(By.xpath(emailLoc), driver, Duration.ofSeconds(30), Duration.ofSeconds(2));
+        WebElement emailElement = actionMethods.findElement(By.xpath(emailLoc), driver, Duration.ofSeconds(30), Duration.ofSeconds(2));
         assertThat(emailElement).isNotNull();
-        assertThat(isClickable(driver, emailElement, Duration.ofSeconds(30))).isTrue();
-        type(emailElement, prop.getProperty("userName"));
-        WebElement passwordElement = findElement(By.xpath(passwordLoc), driver, Duration.ofSeconds(30), Duration.ofSeconds(2));
+        assertThat(actionMethods.isClickable(driver, emailElement, Duration.ofSeconds(30))).isTrue();
+        actionMethods.type(emailElement, prop.getProperty("userName"));
+        WebElement passwordElement = actionMethods.findElement(By.xpath(passwordLoc), driver, Duration.ofSeconds(30), Duration.ofSeconds(2));
         assertThat(passwordElement).isNotNull();
-        assertThat(isClickable(driver, passwordElement, Duration.ofSeconds(30))).isTrue();
-        type(passwordElement, prop.getProperty("password"));
+        assertThat(actionMethods.isClickable(driver, passwordElement, Duration.ofSeconds(30))).isTrue();
+        actionMethods.type(passwordElement, prop.getProperty("password"));
         embedScreenshot(driver, scenario.get(), "Entered credentials");
     }
 
     public void login() {
-        WebElement loginButtonElement = findElement(By.xpath(loginButtonLoc), driver, Duration.ofSeconds(30), Duration.ofSeconds(2));
+        WebElement loginButtonElement = actionMethods.findElement(By.xpath(loginButtonLoc), driver, Duration.ofSeconds(30), Duration.ofSeconds(2));
         assertThat(loginButtonElement).isNotNull();
-        click(driver, loginButtonElement, Duration.ofSeconds(30));
+        actionMethods.click(driver, loginButtonElement);
     }
 
 
