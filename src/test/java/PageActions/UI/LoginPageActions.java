@@ -1,7 +1,6 @@
 package PageActions.UI;
 
 import driver.WebBrowserFactory;
-import io.cucumber.java.bs.A;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -12,8 +11,7 @@ import java.time.Duration;
 import java.util.Properties;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static stepDefinitions.UI.setUpHook.scenario;
-import static utilities.ActionMethods.*;
+import static stepDefinitions.UI.SetUpHookUi.scenario;
 
 public class LoginPageActions {
     //------------------------Locators----------------------------
@@ -36,12 +34,12 @@ public class LoginPageActions {
         WebElement emailElement = actionMethods.findElement(By.xpath(emailLoc), driver, Duration.ofSeconds(30), Duration.ofSeconds(2));
         assertThat(emailElement).isNotNull();
         assertThat(actionMethods.isClickable(driver, emailElement, Duration.ofSeconds(30))).isTrue();
-        actionMethods.type(emailElement, prop.getProperty("userName"));
+        actionMethods.type(driver,emailElement, prop.getProperty("userName"));
         WebElement passwordElement = actionMethods.findElement(By.xpath(passwordLoc), driver, Duration.ofSeconds(30), Duration.ofSeconds(2));
         assertThat(passwordElement).isNotNull();
         assertThat(actionMethods.isClickable(driver, passwordElement, Duration.ofSeconds(30))).isTrue();
-        actionMethods.type(passwordElement, prop.getProperty("password"));
-        embedScreenshot(driver, scenario.get(), "Entered credentials");
+        actionMethods.type(driver,passwordElement, prop.getProperty("password"));
+        actionMethods.reporting().embedScreenshot(driver, scenario.get(), "Entered credentials");
     }
 
     public void login() {

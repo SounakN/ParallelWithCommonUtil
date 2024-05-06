@@ -107,7 +107,7 @@
                     <skipTests>${maven.test.skip}</skipTests>
                 </configuration>
                 <executions>
-                    <execution>
+                    <!--<execution>
                         <id>parallel-test</id>
                         <phase>test</phase>
                         <goals>
@@ -122,8 +122,8 @@
                             <threadCount>2</threadCount>
                             <perCoreThreadCount>false</perCoreThreadCount>
                         </configuration>
-                    </execution>
-                    <execution>
+                    </execution>-->
+                   <!-- <execution>
                         <id>sequential-test</id>
                         <phase>test</phase>
                         <goals>
@@ -133,6 +133,22 @@
                             <testFailureIgnore>true</testFailureIgnore>
                             <includes>
                                 <include>**/Runners/UIRunners/SequentialTestRunner.java</include>
+                            </includes>
+                            <parallel>methods</parallel>
+                            <threadCount>1</threadCount>
+                            <perCoreThreadCount>false</perCoreThreadCount>
+                        </configuration>
+                    </execution>-->
+                    <execution>
+                        <id>sequential-test</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                        <configuration>
+                            <testFailureIgnore>true</testFailureIgnore>
+                            <includes>
+                                <include>**/Runners/MobileRunners/Android/SequentialTestRunnerMobileAndroid.java</include>
                             </includes>
                             <parallel>methods</parallel>
                             <threadCount>1</threadCount>

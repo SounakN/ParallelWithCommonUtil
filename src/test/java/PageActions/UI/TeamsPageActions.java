@@ -14,8 +14,7 @@ import java.util.Properties;
 
 import static Constants.ConstantsForTeamsSettings.teamSettingsMapping;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static stepDefinitions.UI.setUpHook.scenario;
-import static utilities.ActionMethods.embedText;
+import static stepDefinitions.UI.SetUpHookUi.scenario;
 
 public class TeamsPageActions {
 
@@ -35,7 +34,7 @@ public class TeamsPageActions {
             WebElement inputValue = actionMethods.findElement(By.xpath(String.format("//input[@id='%s']", mapValues.get(key))), driver, Duration.ofSeconds(30), Duration.ofSeconds(2));
             assertThat(inputValue).isNotNull();
             String textExtracted = inputValue.getAttribute("value");
-            embedText(scenario.get(), "Found the extracted text value :: " + textExtracted + " and matching it with the actual value :: " + value + " for the section :: " + key);
+            actionMethods.reporting().embedText(scenario.get(), "Found the extracted text value :: " + textExtracted + " and matching it with the actual value :: " + value + " for the section :: " + key);
             assertThat(textExtracted).isEqualTo(value);
 
         });

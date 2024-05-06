@@ -12,8 +12,7 @@ import java.time.Duration;
 import java.util.Properties;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static stepDefinitions.UI.setUpHook.scenario;
-import static utilities.ActionMethods.*;
+import static stepDefinitions.UI.SetUpHookUi.scenario;
 
 public class CommonPageActions {
     private String modalClosureLoc = "//*[@class='modal-title']/span";
@@ -41,7 +40,7 @@ public class CommonPageActions {
         WebElement teamElement = actionMethods.findElement(By.xpath(teamLoc), driver, Duration.ofSeconds(30), Duration.ofSeconds(2));
         assertThat(teamElement).isNotNull();
         actionMethods.click(driver, teamElement);
-        embedScreenshot(driver, scenario.get(), "Clicked on Team");
+        actionMethods.reporting().embedScreenshot(driver, scenario.get(), "Clicked on Team");
         return teamElement;
     }
 
@@ -52,13 +51,13 @@ public class CommonPageActions {
         actionMethods.click(driver, LogoutElement);
         WebElement loggedOutToastMessageElement = actionMethods.findElement(By.xpath(loggedOutToastMessageLoc), driver, Duration.ofSeconds(30), Duration.ofSeconds(2));
         assertThat(loggedOutToastMessageElement).isNotNull();
-        embedScreenshot(driver, scenario.get(), "Logged Out");
+        actionMethods.reporting().embedScreenshot(driver, scenario.get(), "Logged Out");
     }
 
     public void closesModal() {
         WebElement modalClosureElement = actionMethods.findElement(By.xpath(modalClosureLoc), driver, Duration.ofSeconds(30), Duration.ofSeconds(2));
         assertThat(modalClosureElement).isNotNull();
         actionMethods.click(driver, modalClosureElement);
-        embedText(scenario.get(), "Closed modal");
+        actionMethods.reporting().embedText(scenario.get(), "Closed modal");
     }
 }

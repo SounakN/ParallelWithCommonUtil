@@ -6,12 +6,12 @@ import driver.MobileFactory;
 import java.util.function.Supplier;
 
 public class PageObjectInitializationAndroid {
-    private static Supplier<LoginPageActions> loginPageActionsSupplier = null;
+    private static Supplier<LoginPageAndroidActions> loginPageActionsAndroidSupplier = null;
 
     public static void initializeObjects(MobileFactory mobileFactory) {
-        loginPageActionsSupplier = () -> new LoginPageActions(mobileFactory);
+        loginPageActionsAndroidSupplier = () -> new LoginPageAndroidActions(mobileFactory);
     }
 
-    public LoginPageActions loginPageActions = loginPageActionsSupplier.get();
+    public LoginPageAndroidActions loginPageAndroidActions = loginPageActionsAndroidSupplier.get();
 
 }

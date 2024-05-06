@@ -12,9 +12,9 @@ import org.junit.runner.RunWith;
                 "json:target/reports/Mobile/Android/cucumberSequential.json"
         },
         features = {"src/test/resources/FeatureFiles/Mobile/Android"},
-        glue = {"stepDefinitions/Mobile"},
-        tags = "",
+        glue = {"stepDefinitions/Mobile/Android"},
+        tags = "@MobileAndroid",
         dryRun = false, monochrome = true
 )
-public class SequentialTestRunnerMobile {
+public class SequentialTestRunnerMobileAndroid {
 }

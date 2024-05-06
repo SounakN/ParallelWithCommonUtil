@@ -1,37 +1,34 @@
-package stepDefinitions.Mobile;
+package stepDefinitions.UI;
 
 
-import PageActions.Mobile.Android.PageObjectInitializationAndroid;
-import PageActions.UI.PageObjectInitialization;
-import driver.MobileFactory;
 import driver.WebBrowserFactory;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
+import PageActions.UI.PageObjectInitialization;
 import utilities.PropertyReader;
 import utilities.PropertyUtil;
 
 import java.io.File;
 
-import static driver.BasicConstants.DATA_CONFIG;
-import static driver.BasicConstants.MAVEN_PROPERTIES_FILE;
+import static driver.BasicConstants.*;
 
 @Slf4j
-public class setUpHook extends MobileFactory {
-    private MobileFactory mobileFactory;
+public class SetUpHookUi extends WebBrowserFactory {
+    private WebBrowserFactory webBrowserFactory;
     public static ThreadLocal<Scenario> scenario = new ThreadLocal<>();
 
-    public setUpHook(MobileFactory mobileFactory) {
-        this.mobileFactory = mobileFactory;
+    public SetUpHookUi(WebBrowserFactory webBrowserFactory) {
+        this.webBrowserFactory = webBrowserFactory;
     }
 
 /*    static {
 
     }*/
 
-    @Before
+    @Before(value="@web")
     @SneakyThrows
     public void Initiation(Scenario sc) {
         String env = PropertyReader.getProperties(DATA_CONFIG + File.separator + MAVEN_PROPERTIES_FILE).getProperty("Env");
@@ -48,14 +45,14 @@ public class setUpHook extends MobileFactory {
         String ff = convertFileToJsonString("TestData/check.json");
         System.out.println(ff);*/
       //  System.out.println(sc.getName() + " is being running at :: " + Thread.currentThread().getId() + ":" + PropertyUtil.getProperty("maven"));
-        PageObjectInitializationAndroid.initializeObjects(mobileFactory);
-        setMobileType(PropertyUtil.getProperty("Driver_mobile"));
-       /* scenario.set(sc);*/
+        PageObjectInitialization.initializeObjects(webBrowserFactory);
+        setBrowserType(PropertyUtil.getProperty("Driver"));
+        scenario.set(sc);
 
     }
 
 
-    @After
+    @After(value="@web")
     public void TearDown(Scenario sc) throws Exception {
         quit();
     }
