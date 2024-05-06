@@ -163,7 +163,7 @@
                 <artifactId>maven-cucumber-reporting</artifactId>
                 <version>3.16.0</version>
                 <executions>
-                    <execution>
+                    <!--<execution>
                         <id>execution-Combined</id>
                         <phase>${skipPluginPhase}</phase>
                         <goals>
@@ -171,8 +171,8 @@
                         </goals>
                         <configuration>
                             <projectName>>cucumber-jvm-example</projectName>
-                            <outputDirectory>${project.build.directory}/reports/combined</outputDirectory>
-                            <cucumberOutput>${project.build.directory}/reports</cucumberOutput>
+                            <outputDirectory>${project.build.directory}/reports/UI/combined</outputDirectory>
+                            <cucumberOutput>${project.build.directory}/reports/UI</cucumberOutput>
                             <parallelTesting>true</parallelTesting>
                             <checkBuildResult>false</checkBuildResult>
                         </configuration>
@@ -185,8 +185,8 @@
                         </goals>
                         <configuration>
                             <projectName>>cucumber-jvm-example</projectName>
-                            <outputDirectory>${project.build.directory}/reports/Sequential</outputDirectory>
-                            <cucumberOutput>${project.build.directory}/reports/cucumberSequential.json</cucumberOutput>
+                            <outputDirectory>${project.build.directory}/reports/UI/Sequential</outputDirectory>
+                            <cucumberOutput>${project.build.directory}/reports/UI/cucumberSequential.json</cucumberOutput>
                             <checkBuildResult>false</checkBuildResult>
                         </configuration>
                     </execution>
@@ -198,9 +198,22 @@
                         </goals>
                         <configuration>
                             <projectName>>cucumber-jvm-example</projectName>
-                            <outputDirectory>${project.build.directory}/reports/Parallel</outputDirectory>
-                            <cucumberOutput>${project.build.directory}/reports/cucumberParallel.json</cucumberOutput>
-                            <!-- <parallelTesting>true</parallelTesting>-->
+                            <outputDirectory>${project.build.directory}/reports/UI/Parallel</outputDirectory>
+                            <cucumberOutput>${project.build.directory}/reports/UI/cucumberParallel.json</cucumberOutput>
+                            &lt;!&ndash; <parallelTesting>true</parallelTesting>&ndash;&gt;
+                            <checkBuildResult>false</checkBuildResult>
+                        </configuration>
+                    </execution>-->
+                    <execution>
+                        <id>execution-Sequential</id>
+                        <phase>${skipPluginPhase}</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <projectName>>cucumber-jvm-example</projectName>
+                            <outputDirectory>${project.build.directory}/reports/Mobile/Android/Combined</outputDirectory>
+                            <cucumberOutput>${project.build.directory}/reports/Mobile/Android/CucumberMobileAndroidReport.json</cucumberOutput>
                             <checkBuildResult>false</checkBuildResult>
                         </configuration>
                     </execution>

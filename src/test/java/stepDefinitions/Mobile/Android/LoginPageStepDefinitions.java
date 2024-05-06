@@ -20,10 +20,10 @@ public class LoginPageStepDefinitions {
 
     }
 
-    @Given("User launches the App and enters mobile number {string}")
-    public void userLaunchesTheAppAndEntersMobileNumber(String mobileNumber) {
+    @Given("User launches the App and enters mobile number")
+    public void userLaunchesTheAppAndEntersMobileNumber() {
         pageObjectInitialization.loginPageAndroidActions.cancelGooglePopUp();
-        pageObjectInitialization.loginPageAndroidActions.enterMobileNumber(mobileNumber);
+        pageObjectInitialization.loginPageAndroidActions.enterMobileNumber();
     }
 
     @Then("enters the OTP")

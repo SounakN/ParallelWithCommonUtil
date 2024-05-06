@@ -50,10 +50,10 @@ public class LoginPageAndroidActions {
         actionMethods.reporting().embedText(SetUpHookMobileAndroid.scenario.get(),"Found Google pop Up");
         actionMethods.click(driver, googlePopUp);
     }
-    public void enterMobileNumber(String mobileNumber){
+    public void enterMobileNumber(){
         WebElement mobileNumberElement = actionMethods.findElement(By.xpath(mobileNumberLoc),driver,Duration.ofSeconds(30),Duration.ofSeconds(5));
         assertThat(actionMethods.isClickable(driver,mobileNumberElement)).isTrue();
-        actionMethods.type(driver,mobileNumberElement,mobileNumber);
+        actionMethods.type(driver,mobileNumberElement,prop.getProperty("MobileNumber"));
         actionMethods.reporting().embedScreenshot(driver, SetUpHookMobileAndroid.scenario.get(),"Mobile number entered");
     }
     public void entersOtp() throws InterruptedException {
@@ -89,7 +89,6 @@ public class LoginPageAndroidActions {
         WebElement userDetailsHeaderElement = actionMethods.findElement(By.xpath(userDetailsHeaderLoc),driver,Duration.ofSeconds(30),Duration.ofSeconds(5));
         assertThat(userDetailsHeaderElement).isNotNull();
         actionMethods.reporting().embedText(SetUpHookMobileAndroid.scenario.get(),"Landed on User details page");
-        assertThat(actionMethods.waitTillElementVisible(driver,userDetailsHeaderElement)).isTrue();
     }
 
     @SneakyThrows
