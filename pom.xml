@@ -107,7 +107,7 @@
                     <skipTests>${maven.test.skip}</skipTests>
                 </configuration>
                 <executions>
-                    <!--<execution>
+                    <execution>
                         <id>parallel-test</id>
                         <phase>test</phase>
                         <goals>
@@ -122,8 +122,8 @@
                             <threadCount>2</threadCount>
                             <perCoreThreadCount>false</perCoreThreadCount>
                         </configuration>
-                    </execution>-->
-                   <!-- <execution>
+                    </execution>
+                    <execution>
                         <id>sequential-test</id>
                         <phase>test</phase>
                         <goals>
@@ -138,8 +138,8 @@
                             <threadCount>1</threadCount>
                             <perCoreThreadCount>false</perCoreThreadCount>
                         </configuration>
-                    </execution>-->
-                    <execution>
+                    </execution>
+                   <!-- <execution>
                         <id>sequential-test</id>
                         <phase>test</phase>
                         <goals>
@@ -154,7 +154,7 @@
                             <threadCount>1</threadCount>
                             <perCoreThreadCount>false</perCoreThreadCount>
                         </configuration>
-                    </execution>
+                    </execution>-->
                 </executions>
             </plugin>
 
@@ -163,7 +163,7 @@
                 <artifactId>maven-cucumber-reporting</artifactId>
                 <version>3.16.0</version>
                 <executions>
-                    <!--<execution>
+                    <execution>
                         <id>execution-Combined</id>
                         <phase>${skipPluginPhase}</phase>
                         <goals>
@@ -200,11 +200,11 @@
                             <projectName>>cucumber-jvm-example</projectName>
                             <outputDirectory>${project.build.directory}/reports/UI/Parallel</outputDirectory>
                             <cucumberOutput>${project.build.directory}/reports/UI/cucumberParallel.json</cucumberOutput>
-                            &lt;!&ndash; <parallelTesting>true</parallelTesting>&ndash;&gt;
+                            <!-- <parallelTesting>true</parallelTesting>-->
                             <checkBuildResult>false</checkBuildResult>
                         </configuration>
-                    </execution>-->
-                    <execution>
+                    </execution>
+                    <!--<execution>
                         <id>execution-Sequential</id>
                         <phase>${skipPluginPhase}</phase>
                         <goals>
@@ -216,7 +216,7 @@
                             <cucumberOutput>${project.build.directory}/reports/Mobile/Android/CucumberMobileAndroidReport.json</cucumberOutput>
                             <checkBuildResult>false</checkBuildResult>
                         </configuration>
-                    </execution>
+                    </execution>-->
                 </executions>
             </plugin>
             <plugin>

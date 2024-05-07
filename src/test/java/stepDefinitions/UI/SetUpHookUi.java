@@ -28,7 +28,7 @@ public class SetUpHookUi extends WebBrowserFactory {
 
     }*/
 
-    @Before(value="@web")
+    @Before(value="@Web")
     @SneakyThrows
     public void Initiation(Scenario sc) {
         String env = PropertyReader.getProperties(DATA_CONFIG + File.separator + MAVEN_PROPERTIES_FILE).getProperty("Env");
@@ -52,7 +52,7 @@ public class SetUpHookUi extends WebBrowserFactory {
     }
 
 
-    @After(value="@web")
+    @After(value="@Web")
     public void TearDown(Scenario sc) throws Exception {
         quit();
     }

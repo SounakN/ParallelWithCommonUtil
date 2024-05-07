@@ -1,5 +1,6 @@
 Feature: Section header details verification
 
+  @Web
   Scenario Outline: Verify that header values are right for Sections positive
     Given User hits the URl of mindAi
     Then Logs in using the credentials

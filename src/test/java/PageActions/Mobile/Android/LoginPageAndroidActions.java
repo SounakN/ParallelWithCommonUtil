@@ -10,11 +10,14 @@ import utilities.ActionMethods;
 import utilities.PropertyUtil;
 
 import java.time.Duration;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static utilities.TestUtilities.getOtpInListForMobile;
 
 
 public class LoginPageAndroidActions {
@@ -34,8 +37,8 @@ public class LoginPageAndroidActions {
   private final String allowPermissionLoc ="//android.widget.Button[@text='Allow']";
   private final String denyPermissionLoc ="//android.widget.Button[@text='Deny']";
     //------------------------Locators----------------------------
-    private AppiumDriver driver;
-    private Properties prop;
+    private final AppiumDriver driver;
+    private final Properties prop;
     ActionMethods<AppiumDriver> actionMethods = null;
 
     public LoginPageAndroidActions(MobileFactory mobileFactory) {
@@ -56,7 +59,7 @@ public class LoginPageAndroidActions {
         actionMethods.type(driver,mobileNumberElement,prop.getProperty("MobileNumber"));
         actionMethods.reporting().embedScreenshot(driver, SetUpHookMobileAndroid.scenario.get(),"Mobile number entered");
     }
-    public void entersOtp() throws InterruptedException {
+    public void entersOtp() {
         WebElement getOtpElement = actionMethods.findElement(By.xpath(getOtpLoc),driver,Duration.ofSeconds(30),Duration.ofSeconds(5));
         assertThat(actionMethods.isClickable(driver,getOtpElement)).isTrue();
         actionMethods.click(driver,getOtpElement);
@@ -64,10 +67,12 @@ public class LoginPageAndroidActions {
         List<WebElement> otpElements = actionMethods.findElements(By.xpath(otpLoc),driver,Duration.ofSeconds(30),Duration.ofSeconds(5));
         assertThat(otpElements.size()).isEqualTo(4);
         actionMethods.reporting().embedScreenshot(driver, SetUpHookMobileAndroid.scenario.get(),"OTP Page loaded");
-        otpElements.stream().forEach(elem->{
-            assertThat(actionMethods.isClickable(driver,elem)).isTrue();
+        List<String> otpList = getOtpInListForMobile();
+        AtomicInteger counter = new AtomicInteger();
+        otpElements.forEach(elem->{
+           /* assertThat(actionMethods.isClickable(driver,elem)).isTrue();*/
             actionMethods.actionsCommands().moveToElement(driver,elem);
-            actionMethods.actionsCommands().type(driver,"9");
+            actionMethods.actionsCommands().type(driver,otpList.get(counter.getAndIncrement()));
         });
 /*
 

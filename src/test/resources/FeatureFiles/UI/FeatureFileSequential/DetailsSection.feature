@@ -1,6 +1,7 @@
 Feature: User details verification from Teams Settings
 
 
+  @Web
   Scenario Outline: Testing user details section positive
     Given User hits the URl of mindAi
     Then Logs in using the credentials

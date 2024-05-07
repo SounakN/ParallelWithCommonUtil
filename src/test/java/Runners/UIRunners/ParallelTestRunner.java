@@ -13,7 +13,7 @@ import org.junit.runner.RunWith;
         },
         features = {"src/test/resources/FeatureFiles/UI/FeatureFileParallel"},
         glue = {"stepDefinitions/UI"},
-        tags = "",
+        tags = "@Web",
         dryRun = false, monochrome = true
 )
 public class ParallelTestRunner {
